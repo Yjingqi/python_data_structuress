@@ -6,10 +6,6 @@
 
 
 
-
-
-
-
 # def test4():
 #     list1 = list(range(1000))
 
