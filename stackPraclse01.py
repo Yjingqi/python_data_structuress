@@ -53,33 +53,73 @@
 # sum = (1+2)*(3+4)/(5+6)
 # print(sum)
 
+# from pythonds.basic.stack import Stack
+
+# # symbolString  假设  “（（））”
+# def parChenker(symbolString):
+#     s = Stack()
+#     flag = True
+#     index = 0
+
+#     while index < len(symbolString) and flag:
+#         symbol = symbolString[index]
+#         if symbol == "(":
+#             s.push(symbol)
+#         else:
+#             if s.isEmpty():
+#                 flag = False
+#             else:
+#                 s.pop()
+
+#         index = index + 1
+#     if flag and s.isEmpty():
+#         return True
+#     else:
+#         return False
+
+
+# print(parChenker('(())'))#
+# print(parChenker('((())'))
+
+#  {[()]}     ([)]
+
+
+
 from pythonds.basic.stack import Stack
 
-# symbolString  假设  “（（））”
-def parChenker(symbolString):
+
+def parChenker(SyntaxWarning):
     s = Stack()
     flag = True
     index = 0
-
     while index < len(symbolString) and flag:
-        symbol = symbolString[index]
-        if symbol == "(":
-            s.path(symbol)
+        symbol = symbol[index]
+
+        if symbol in "([{":
+            s.push(symbol)
         else:
-            if s.isEmpty():
+            if symbol in "([{":
                 flag = False
             else:
-                s.pop()
+                top = s.pop()
+                start = "([{"
+                end = ")]}"
+               
+                if not start.index(top) == end.index(symbol):
+                    flag = False
 
         index = index + 1
+    
+    
     if flag and s.isEmpty():
         return True
     else:
         return False
 
+print(parChenker"{[()]}")
+print(parChenker("{{([][])}()}"))
+print(parChenker('[{()]'))
 
-print(parChenker('(())'))
-print(parChenker('((())'))
 
 
 
